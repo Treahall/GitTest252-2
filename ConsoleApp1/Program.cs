@@ -10,20 +10,30 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("I am thinking of a number between 1 and 100");
-            
-            Random random = new Random(100);
+            string userInput;
+            Console.WriteLine("Hello I am going to think of a posative number.");
+            Console.Write("What number do you want the lowerbound to be (no lower than 0): ");
+            userInput = Console.ReadLine();
+            int x = Convert.ToInt32(userInput);
+            Console.WriteLine();
 
-            int Mynum = random.Next(0, 100);
+            Console.Write("What number do you want the upperbound to be: ");
+            userInput = Console.ReadLine();
+            int y = Convert.ToInt32(userInput);
+            Console.WriteLine();
+
+            Console.WriteLine("I am thinking of a number between {0} and {1}.", x, y);
+
+            Random random = new Random(100);
+            int Mynum = random.Next(x, y);
             int guess = -1;
             int numTries = 0;
 
             do
             {
-                Console.WriteLine("==========================================");
+                Console.WriteLine("=========================================================");
                 Console.Write("Guess the number: ");
-                string userInput = Console.ReadLine();
+                userInput = Console.ReadLine();
 
                 guess = Convert.ToInt32(userInput);
 
@@ -37,8 +47,8 @@ namespace ConsoleApp1
                 numTries++;
             } while (Mynum != guess);
 
-            Console.WriteLine("==========================================");
-            Console.WriteLine("It took you '{0}' tries", numTries);
+            Console.WriteLine("=========================================================");
+            Console.WriteLine("It took you {0} tries", numTries);
             Console.WriteLine("Press any key to exit");
 
             Console.ReadKey();
